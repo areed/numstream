@@ -21,3 +21,19 @@ func IncrementByX(n int) Unary {
 
 //Increment is a Reduce incrementer for use in generators
 var Increment = ReduceUnary(IncrementByX(1))
+
+//FactorOut returns the second argument after factoring out the first argument as many times as possible
+func FactorOut(n, m int) int {
+	if n == 0 {
+		return m
+	}
+	for m%n == 0 {
+		m /= n
+	}
+	return m
+}
+
+//FactorOutX returns a FactorOut Unary bound to a factor
+func FactorOutX(n int) Unary {
+	return Partial2(FactorOut, n)
+}
