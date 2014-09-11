@@ -1,5 +1,9 @@
 package numstream
 
+import (
+	"math"
+)
+
 //Sum is an n-ary addition operation.
 func Sum(ns ...int) int {
 	l := len(ns)
@@ -36,4 +40,8 @@ func FactorOut(n, m int) int {
 //FactorOutX returns a FactorOut Unary bound to a factor
 func FactorOutX(n int) Unary {
 	return Partial2(FactorOut, n)
+}
+
+func GreatestPossiblePrimeFactor(n int) int {
+	return int(math.Sqrt(float64(n)))
 }

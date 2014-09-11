@@ -56,3 +56,26 @@ func TestFactorOutX(t *testing.T) {
 		}
 	}
 }
+
+func TestGreatestPossiblePrimeFactor(t *testing.T) {
+	var tests = []struct {
+		n, gpf int
+	}{
+		{1, 1},
+		{2, 1},
+		{3, 1},
+		{4, 2},
+		{5, 2},
+		{6, 2},
+		{7, 2},
+		{8, 2},
+		{9, 3},
+		{10, 3},
+	}
+	for _, r := range tests {
+		a := GreatestPossiblePrimeFactor(r.n)
+		if a != r.gpf {
+			t.Errorf("GreatestPossiblePrimeFactor(%d) => %d, want %d", r.n, a, r.gpf)
+		}
+	}
+}
